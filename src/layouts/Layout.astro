@@ -1,0 +1,93 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/playfair-display/700.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import ThemeScript from '../components/ThemeScript.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "The Museum of Lost Time is dedicated to preserving forgotten technologies and everyday objects that once shaped our lives."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Museum of Lost Time</title>
+    <ThemeScript />
+  </head>
+  <body class="bg-white dark:bg-dark-900 text-dark-800 dark:text-white transition-colors duration-300">
+    <Header />
+    <main class="min-h-screen pt-16">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease-out;
+  }
+
+  .animate-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* For page transitions */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .page-transition {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+</style>
+
+<script>
+  // Animation on scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    animatedElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>

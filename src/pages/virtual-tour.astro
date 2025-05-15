@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+
+const tourHighlights = [
+  {
+    title: "Main Exhibition Hall",
+    image: "https://images.pexels.com/photos/5935794/pexels-photo-5935794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "Explore our primary exhibition space featuring rotating displays of vintage technology."
+  },
+  {
+    title: "Computing Through the Ages",
+    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "Journey through the evolution of personal computing, from mainframes to smartphones."
+  },
+  {
+    title: "Audio Visual Gallery",
+    image: "https://images.pexels.com/photos/775414/pexels-photo-775414.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "Discover the transformation of home entertainment and media formats."
+  }
+];
+
+const features = [
+  {
+    title: "360° Views",
+    description: "Immerse yourself in panoramic views of our exhibition spaces",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" />
+    </svg>`
+  },
+  {
+    title: "Audio Guide",
+    description: "Listen to detailed explanations from our expert curators",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+    </svg>`
+  },
+  {
+    title: "Interactive Elements",
+    description: "Click on artifacts to learn more about their history",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
+    </svg>`
+  }
+];
+---
+
+<Layout 
+  title="Virtual Tour"
+  description="Experience our museum from anywhere in the world with our immersive virtual tour."
+>
+  <Hero 
+    title="Virtual Museum Tour"
+    subtitle="Explore our exhibits from anywhere in the world"
+    image="https://images.pexels.com/photos/5935794/pexels-photo-5935794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  />
+  
+  <!-- Tour Introduction -->
+  <section class="py-16 bg-white dark:bg-dark-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center animate-on-scroll">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white mb-6">
+          Experience the Museum Virtually
+        </h2>
+        <p class="text-dark-600 dark:text-dark-300 text-lg mb-8">
+          Our virtual tour brings the Museum of Lost Time directly to you. Explore our exhibits, learn about historical technology, and discover fascinating stories from the comfort of your home.
+        </p>
+        <div class="mt-8">
+          <button 
+            id="start-tour"
+            class="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+          >
+            Start Virtual Tour
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Tour Features -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50">
+    <div class="container mx-auto px-4">
+      <h2 class="font-display font-bold text-3xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+        Virtual Tour Features
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {features.map(feature => (
+          <div class="bg-white dark:bg-dark-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow animate-on-scroll">
+            <div class="text-primary-600 dark:text-primary-400 mb-4">
+              <Fragment set:html={feature.icon} />
+            </div>
+            <h3 class="font-bold text-xl mb-2 text-dark-900 dark:text-white">{feature.title}</h3>
+            <p class="text-dark-600 dark:text-dark-300">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Tour Highlights -->
+  <section class="py-16 bg-white dark:bg-dark-900">
+    <div class="container mx-auto px-4">
+      <h2 class="font-display font-bold text-3xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+        Tour Highlights
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {tourHighlights.map(highlight => (
+          <div class="group relative overflow-hidden rounded-lg shadow-md animate-on-scroll">
+            <img 
+              src={highlight.image} 
+              alt={highlight.title} 
+              class="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-dark-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <h3 class="font-display font-bold text-white text-xl mb-2">{highlight.title}</h3>
+              <p class="text-white/90">{highlight.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Technical Requirements -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display font-bold text-3xl text-dark-900 dark:text-white text-center mb-8 animate-on-scroll">
+          Technical Requirements
+        </h2>
+        
+        <div class="bg-white dark:bg-dark-800 rounded-lg p-6 shadow-md animate-on-scroll">
+          <h3 class="font-bold text-xl mb-4 text-dark-900 dark:text-white">Recommended Setup</h3>
+          <ul class="space-y-3 text-dark-600 dark:text-dark-300">
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              Modern web browser (Chrome, Firefox, Safari, or Edge)
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              Stable internet connection (minimum 5 Mbps)
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              Speakers or headphones for audio guide
+            </li>
+          </ul>
+          
+          <div class="mt-6 pt-6 border-t border-dark-100 dark:border-dark-700">
+            <p class="text-dark-600 dark:text-dark-300">
+              For the best experience, we recommend using a desktop or laptop computer. The virtual tour is also accessible on tablets and mobile devices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Virtual Tour Initialization
+  document.addEventListener('DOMContentLoaded', () => {
+    const startTourButton = document.getElementById('start-tour');
+    
+    if (startTourButton) {
+      startTourButton.addEventListener('click', () => {
+        // Here you would typically initialize your virtual tour software
+        alert('Virtual tour experience coming soon!');
+      });
+    }
+  });
+</script>

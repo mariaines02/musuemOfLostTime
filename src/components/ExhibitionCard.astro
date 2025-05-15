@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  image: string;
+  description: string;
+  location: string;
+  link: string;
+}
+
+const { title, date, image, description, location, link } = Astro.props;
+---
+
+<div class="group flex flex-col h-full bg-white dark:bg-dark-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 animate-on-scroll">
+  <div class="relative overflow-hidden">
+    <img 
+      src={image} 
+      alt={title} 
+      class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+    <div class="absolute top-4 left-4 bg-primary-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+      {date}
+    </div>
+  </div>
+  <div class="flex-1 p-6">
+    <div class="text-dark-400 dark:text-dark-400 text-sm mb-2">{location}</div>
+    <h3 class="font-display font-bold text-xl mb-3 text-dark-900 dark:text-white">{title}</h3>
+    <p class="text-dark-600 dark:text-dark-300 mb-4">{description}</p>
+    <a 
+      href={link}
+      class="inline-flex items-center font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
+    >
+      Learn more
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+      </svg>
+    </a>
+  </div>
+</div>

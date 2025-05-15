@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+
+const teamMembers = [
+  {
+    name: "Dr. Sarah Chen",
+    role: "Museum Director",
+    image: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    bio: "With over 15 years of experience in technology preservation and museum curation, Dr. Chen leads our institution's mission to preserve digital heritage."
+  },
+  {
+    name: "Marcus Thompson",
+    role: "Head Curator",
+    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    bio: "Specializing in vintage computing and gaming technology, Marcus ensures our exhibits tell compelling stories about technological evolution."
+  },
+  {
+    name: "Dr. Emily Rodriguez",
+    role: "Education Director",
+    image: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    bio: "Leading our educational programs, Emily develops innovative ways to engage visitors with historical technology."
+  }
+];
+
+const milestones = [
+  {
+    year: "2020",
+    title: "Museum Founding",
+    description: "Established with a mission to preserve and showcase technological heritage."
+  },
+  {
+    year: "2021",
+    title: "First Major Exhibition",
+    description: "Launched 'Digital Dawn' exhibition, featuring early personal computers."
+  },
+  {
+    year: "2022",
+    title: "Education Program Launch",
+    description: "Introduced interactive workshops and school programs."
+  },
+  {
+    year: "2023",
+    title: "Collection Expansion",
+    description: "Added major acquisitions in vintage gaming and mobile technology."
+  },
+  {
+    year: "2024",
+    title: "Virtual Museum Launch",
+    description: "Introduced online exhibitions and virtual tours."
+  }
+];
+---
+
+<Layout 
+  title="About Us"
+  description="Learn about the Museum of Lost Time's mission, history, and the team preserving technological heritage."
+>
+  <Hero 
+    title="About Our Museum"
+    subtitle="Preserving the past to inspire the future"
+    image="/public/image1.jpg"
+  />
+  
+  <!-- Mission Section -->
+  <section class="py-16 bg-white dark:bg-dark-900" id="mission">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center animate-on-scroll">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white mb-6">
+          Our Mission
+        </h2>
+        <p class="text-dark-600 dark:text-dark-300 text-lg mb-8">
+          The Museum of Lost Time is dedicated to preserving and showcasing the technological artifacts that shaped our recent past. We believe that understanding yesterday's innovations helps us better appreciate today's technology and imagine tomorrow's possibilities.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div class="p-6 bg-dark-50 dark:bg-dark-800 rounded-lg">
+            <h3 class="font-bold text-xl mb-3 text-dark-900 dark:text-white">Preserve</h3>
+            <p class="text-dark-600 dark:text-dark-300">Collecting and maintaining technological artifacts for future generations.</p>
+          </div>
+          <div class="p-6 bg-dark-50 dark:bg-dark-800 rounded-lg">
+            <h3 class="font-bold text-xl mb-3 text-dark-900 dark:text-white">Educate</h3>
+            <p class="text-dark-600 dark:text-dark-300">Sharing knowledge about the evolution of technology and its impact on society.</p>
+          </div>
+          <div class="p-6 bg-dark-50 dark:bg-dark-800 rounded-lg">
+            <h3 class="font-bold text-xl mb-3 text-dark-900 dark:text-white">Inspire</h3>
+            <p class="text-dark-600 dark:text-dark-300">Encouraging innovation by connecting past technological achievements with future possibilities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- History Timeline -->
+  <section class="py-16 bg-white dark:bg-dark-900" id="history">
+    <div class="container mx-auto px-4">
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+        Our Journey
+      </h2>
+      
+      <div class="max-w-4xl mx-auto">
+        {milestones.map((milestone, index) => (
+          <div class="flex items-start mb-12 last:mb-0 animate-on-scroll">
+            <div class="flex-shrink-0 w-24 pt-1">
+              <div class="font-display font-bold text-xl text-primary-600 dark:text-primary-400">{milestone.year}</div>
+            </div>
+            <div class="flex-grow pl-8 border-l-2 border-primary-200 dark:border-primary-800">
+              <h3 class="font-bold text-xl mb-2 text-dark-900 dark:text-white">{milestone.title}</h3>
+              <p class="text-dark-600 dark:text-dark-300">{milestone.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Support Section -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center animate-on-scroll">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white mb-6">
+          Support Our Mission
+        </h2>
+        <p class="text-dark-600 dark:text-dark-300 text-lg mb-8">
+          Help us preserve technological history for future generations. Your support enables us to maintain our collection, create new exhibits, and develop educational programs.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a 
+            href="/donate" 
+            class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+          >
+            Make a Donation
+          </a>
+          <a 
+            href="/membership" 
+            class="inline-flex items-center justify-center px-6 py-3 border-2 border-primary-600 dark:border-primary-500 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white font-medium rounded-lg transition-colors"
+          >
+            Become a Member
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ExhibitionCard from '../components/ExhibitionCard.astro';
+import BlogCard from '../components/BlogCard.astro';
+import GalleryItem from '../components/GalleryItem.astro';
+import MuseumRules from '../components/MuseumRules.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+// Sample exhibitions
+const exhibitions = [
+  {
+    title: "The Tech Time Capsule",
+    date: "June 1 - July 15, 2025",
+    image: "https://images.pexels.com/photos/2587464/pexels-photo-2587464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "Explore vintage phones, cassette players, floppy disks, and more. The exhibition highlights how these inventions once revolutionized our lives.",
+    location: "Main Hall",
+    link: "/exhibitions/tech-time-capsule"
+  },
+  {
+    title: "Forgotten Media Formats",
+    date: "May 10 - June 30, 2025",
+    image: "https://images.pexels.com/photos/6044255/pexels-photo-6044255.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "An exploration of obsolete media formats that shaped how we consumed entertainment - from VHS and LaserDisc to MiniDisc and more.",
+    location: "Media Wing",
+    link: "/exhibitions/forgotten-media"
+  },
+  {
+    title: "Evolution of Computing",
+    date: "July 20 - September 5, 2025",
+    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "From room-sized mainframes to pocket-sized smartphones, explore the rapid evolution of computing devices over the decades.",
+    location: "Technology Hall",
+    link: "/exhibitions/computing-evolution"
+  }
+];
+
+// Sample blog posts
+const blogPosts = [
+  {
+    title: "The Last Days of the Telephone Booth",
+    date: new Date("2025-04-15"),
+    image: "image4.jpg",
+    excerpt: "Once a common sight on every street corner, telephone booths have now become relics of a bygone era. This article examines their cultural significance.",
+    author: "Emma Richards",
+    slug: "last-days-telephone-booth",
+    featured: true
+  },
+  {
+    title: "Video Game Arcades: A Lost Social Experience",
+    date: new Date("2025-04-02"),
+    image: "/image6.jpg",
+    excerpt: "Before online gaming, arcades were social hubs where gamers gathered to compete and connect. We explore this uniquely physical gaming culture.",
+    author: "Marcus Chen",
+    slug: "video-game-arcades"
+  },
+  {
+    title: "The Rise and Fall of the Cassette Tape",
+    date: new Date("2025-03-28"),
+    image: "/image7.jpg",
+    excerpt: "How this simple magnetic storage device revolutionized portable music and created a mixtape culture that defined a generation.",
+    author: "Sophia Williams",
+    slug: "rise-fall-cassette-tape"
+  }
+];
+
+// Gallery items
+const galleryItems = [
+  {
+    image: "/image1.jpg",
+    title: "Rotary Telephone Collection",
+    description: "1940s - 1980s communication devices"
+  },
+  {
+    image: "/image2.jpg",
+    title: "Early Home Computers",
+    description: "From Commodore 64 to early PCs"
+  },
+  {
+    image: "/image3.jpg",
+    title: "Vintage Audio Equipment",
+    description: "Turntables, tape decks, and stereo systems"
+  },
+  {
+    image: "/image5.jpg",
+    title: "Camera Evolution",
+    description: "From film to digital transition"
+  }
+];
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <Hero 
+    title="Welcome to The Museum of Lost Time"
+    subtitle="A space dedicated to preserving the forgotten technologies and everyday objects that once shaped our lives."
+    image="https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    height="large"
+  />
+  
+  <!-- Welcome Section -->
+  <section class="py-20 bg-white dark:bg-dark-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center animate-on-scroll">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white mb-6">
+          Preserving Yesterday's Tomorrow
+        </h2>
+        <p class="text-dark-600 dark:text-dark-300 text-lg mb-8">
+          Established in 2020, our museum invites visitors to step back in time and explore the fascinating journey of technological evolution — from cherished gadgets of the past to those now lost to history.
+        </p>
+        <p class="text-dark-600 dark:text-dark-300 text-lg mb-8">
+          Visitors will interact with nostalgic items, discover how they worked, and reflect on the rapid changes in technology through hands-on exhibits, games, and quizzes.
+        </p>
+        <a 
+          href="/about" 
+          class="inline-flex items-center font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-lg"
+        >
+          Learn more about our mission
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Exhibition -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white mb-4">
+          Featured Exhibition: "The Tech Time Capsule"
+        </h2>
+        <p class="text-dark-600 dark:text-dark-300 max-w-2xl mx-auto">
+          Join us for a special exhibition showcasing rare and obsolete technologies from the 1970s to the early 2000s.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {exhibitions.map(exhibition => (
+          <ExhibitionCard {...exhibition} />
+        ))}
+      </div>
+      
+      <div class="text-center mt-12 animate-on-scroll">
+        <a 
+          href="/exhibitions" 
+          class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+        >
+          View All Exhibitions
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Museum Rules -->
+  <MuseumRules />
+  
+  <!-- Gallery Preview -->
+  <section class="py-16 bg-white dark:bg-dark-900">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white mb-4">
+          Explore Our Collection
+        </h2>
+        <p class="text-dark-600 dark:text-dark-300 max-w-2xl mx-auto">
+          Take a glimpse into our extensive collection of vintage technology and forgotten gadgets.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {galleryItems.map(item => (
+          <GalleryItem {...item} />
+        ))}
+      </div>
+      
+      <div class="text-center mt-12 animate-on-scroll">
+        <a 
+          href="/gallery" 
+          class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+        >
+          View Full Gallery
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Blog Section -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white mb-4">
+          From Our Blog
+        </h2>
+        <p class="text-dark-600 dark:text-dark-300 max-w-2xl mx-auto">
+          Discover stories, insights, and history about technology's fascinating past.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {blogPosts.map(post => (
+          <BlogCard {...post} />
+        ))}
+      </div>
+      
+      <div class="text-center mt-12 animate-on-scroll">
+        <a 
+          href="/blog" 
+          class="inline-flex items-center justify-center px-6 py-3 border-2 border-primary-600 dark:border-primary-500 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white font-medium rounded-lg transition-colors"
+        >
+          Read More Articles
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Visit Information -->
+  <ContactSection />
+  
+  <!-- Virtual Tour Promo -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.pexels.com/photos/5935794/pexels-photo-5935794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+        alt="Museum interior" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-dark-900/70"></div>
+    </div>
+  
+  </section>
+</Layout>

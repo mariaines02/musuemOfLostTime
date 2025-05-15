@@ -1,0 +1,247 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+
+const publishDate = new Date("2025-04-15");
+const formattedDate = publishDate.toLocaleDateString('en-US', { 
+  year: 'numeric', 
+  month: 'long', 
+  day: 'numeric' 
+});
+---
+
+<Layout 
+  title="The Last Days of the Telephone Booth"
+  description="Once a common sight on every street corner, telephone booths have now become relics of a bygone era. This article examines their cultural significance and why they hold such a special place in our collective memory."
+>
+  <Hero 
+    title="The Last Days of the Telephone Booth"
+    subtitle={`Published on ${formattedDate} by Emma Richards`}
+    image="/image2.jpg"
+    height="medium"
+  />
+  
+  <article class="py-16 bg-white dark:bg-dark-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <div class="prose dark:prose-invert lg:prose-lg mx-auto">
+          <p class="lead">
+            In an age where smartphones dominate our daily communications, it's becoming increasingly rare to spot a telephone booth on city streets. These once-ubiquitous fixtures of urban life are disappearing at an alarming rate, taking with them a piece of our collective cultural heritage.
+          </p>
+
+          <h2>A Brief History</h2>
+          <p>
+            The first public telephone booth was installed in 1881 in Berlin, Germany. By the mid-20th century, telephone booths had become essential infrastructure in cities worldwide, providing a vital communication link for people away from home or office.
+          </p>
+
+          <figure class="my-8">
+            <img 
+              src="/image4.jpg" 
+              alt="Vintage telephone booth" 
+              class="rounded-lg shadow-lg"
+            />
+            <figcaption class="text-center text-sm text-dark-500 dark:text-dark-400 mt-2">
+              A classic red telephone booth, once a common sight in urban landscapes
+            </figcaption>
+          </figure>
+
+          <h2>Cultural Impact</h2>
+          <p>
+            Telephone booths were more than just utilitarian objects; they were meeting points, emergency shelters, and even iconic symbols of urban life. They featured prominently in popular culture, from Superman's preferred changing room to Doctor Who's time-traveling TARDIS.
+          </p>
+
+          <h2>The Digital Revolution</h2>
+          <p>
+            The advent of mobile phones in the 1990s began the slow decline of public telephone booths. By the early 2000s, their usage had dropped dramatically. Today, many remaining booths serve more as nostalgic landmarks than functional communication devices.
+          </p>
+
+          <blockquote>
+            "The telephone booth represented more than just a means of communication – it was a symbol of public accessibility and urban connectivity in an era before personal mobile devices."
+          </blockquote>
+
+          <h2>Preservation Efforts</h2>
+          <p>
+            While many telephone booths are being removed, some cities are preserving them as historical landmarks or repurposing them as mini-libraries, art installations, or Wi-Fi hotspots. These creative adaptations ensure that these iconic structures continue to serve their communities in new ways.
+          </p>
+
+          <h2>Looking Forward</h2>
+          <p>
+            As we bid farewell to the era of public telephone booths, it's important to remember their significance in shaping urban life and social interactions. They remind us of a time when making a phone call was a deliberate act, often accompanied by the jingle of coins and the anticipation of connection.
+          </p>
+
+          <div class="flex flex-col md:flex-row gap-8 items-center my-12 p-6 bg-dark-50 dark:bg-dark-800 rounded-lg">
+            <div class="flex-1">
+              <h3 class="font-bold text-xl mb-2">Visit Our Exhibition</h3>
+              <p class="mb-4">
+                Experience our collection of vintage telephone booths and telecommunications equipment in our "Communication Through Time" exhibition.
+              </p>
+              <a 
+                href="/exhibitions/communication-through-time" 
+                class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:underline"
+              >
+                Learn more about the exhibition
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+            </div>
+            <img 
+              src="/image5.jpg" 
+              alt="Vintage telephone" 
+              class="w-full md:w-1/3 rounded-lg shadow-md"
+            />
+          </div>
+        </div>
+
+        <!-- Author Bio -->
+        <div class="mt-12 pt-8 border-t border-dark-200 dark:border-dark-700">
+          <div class="flex items-center">
+            <div>
+              <h3 class="font-bold text-lg text-dark-900 dark:text-white">Emma Richards</h3>
+              <p class="text-dark-600 dark:text-dark-300">
+                Museum Curator and Technology Historian
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Share and Navigation -->
+        <div class="mt-12 flex flex-wrap justify-between items-center pt-8 border-t border-dark-200 dark:border-dark-700">
+          <div class="flex space-x-4">
+            <button class="text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400">
+              Share on Twitter
+            </button>
+            <button class="text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400">
+              Share on Facebook
+            </button>
+          </div>
+          <a 
+            href="/blog" 
+            class="text-primary-600 dark:text-primary-400 hover:underline"
+          >
+            Back to Blog
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Articles -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50">
+    <div class="container mx-auto px-4">
+      <h2 class="font-display font-bold text-3xl text-dark-900 dark:text-white text-center mb-12">
+        Related Articles
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white dark:bg-dark-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+          <img 
+            src="https://images.pexels.com/photos/163131/pexels-photo-163131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            alt="Early computers" 
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2 text-dark-900 dark:text-white">
+              The Evolution of Personal Computing
+            </h3>
+            <p class="text-dark-600 dark:text-dark-300 mb-4">
+              From room-sized machines to pocket computers, explore the journey of personal computing.
+            </p>
+            <a 
+              href="/blog/evolution-personal-computing" 
+              class="text-primary-600 dark:text-primary-400 hover:underline"
+            >
+              Read more
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-dark-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+          <img 
+            src="https://images.pexels.com/photos/775414/pexels-photo-775414.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            alt="Vintage audio equipment" 
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2 text-dark-900 dark:text-white">
+              The Rise and Fall of the Walkman
+            </h3>
+            <p class="text-dark-600 dark:text-dark-300 mb-4">
+              How Sony's iconic portable music player changed how we listen to music.
+            </p>
+            <a 
+              href="/blog/rise-fall-walkman" 
+              class="text-primary-600 dark:text-primary-400 hover:underline"
+            >
+              Read more
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-dark-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+          <img 
+            src="https://images.pexels.com/photos/821738/pexels-photo-821738.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            alt="Film camera" 
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2 text-dark-900 dark:text-white">
+              The Digital Camera Revolution
+            </h3>
+            <p class="text-dark-600 dark:text-dark-300 mb-4">
+              From film to digital: how photography changed in the 21st century.
+            </p>
+            <a 
+              href="/blog/digital-camera-revolution" 
+              class="text-primary-600 dark:text-primary-400 hover:underline"
+            >
+              Read more
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose {
+    max-width: 65ch;
+  }
+  
+  .prose img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .prose h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.875rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    color: inherit;
+  }
+  
+  .prose p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+  
+  .prose .lead {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  
+  .prose blockquote {
+    font-style: italic;
+    border-left: 4px solid theme('colors.primary.600');
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+  }
+  
+  .dark .prose blockquote {
+    border-left-color: theme('colors.primary.400');
+  }
+</style>

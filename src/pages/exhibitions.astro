@@ -1,0 +1,340 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ExhibitionCard from '../components/ExhibitionCard.astro';
+
+// Current exhibitions
+const currentExhibitions = [
+  {
+    title: "The Tech Time Capsule",
+    date: "June 1 - July 15, 2025",
+    image: "https://images.pexels.com/photos/2587464/pexels-photo-2587464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "Explore vintage phones, cassette players, floppy disks, and more. The exhibition highlights how these inventions once revolutionized our lives.",
+    location: "Main Hall",
+    link: "/exhibitions/tech-time-capsule"
+  },
+  {
+    title: "Forgotten Media Formats",
+    date: "May 10 - June 30, 2025",
+    image: "https://images.pexels.com/photos/6044255/pexels-photo-6044255.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "An exploration of obsolete media formats that shaped how we consumed entertainment - from VHS and LaserDisc to MiniDisc and more.",
+    location: "Media Wing",
+    link: "/exhibitions/forgotten-media"
+  },
+  {
+    title: "Evolution of Computing",
+    date: "July 20 - September 5, 2025",
+    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "From room-sized mainframes to pocket-sized smartphones, explore the rapid evolution of computing devices over the decades.",
+    location: "Technology Hall",
+    link: "/exhibitions/computing-evolution"
+  }
+];
+
+// Upcoming exhibitions
+const upcomingExhibitions = [
+  {
+    title: "The Internet of Yesterday",
+    date: "Coming September 2025",
+    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "Journey through the early days of the World Wide Web, from dial-up connections to Web 1.0 sites and early social platforms.",
+    location: "Digital Commons",
+    link: "/exhibitions/internet-yesterday"
+  },
+  {
+    title: "Home Entertainment Revolution",
+    date: "Coming October 2025",
+    image: "https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "Discover how home entertainment evolved from radio to television to streaming services, with interactive exhibits from each era.",
+    location: "Media Wing",
+    link: "/exhibitions/home-entertainment"
+  }
+];
+
+// Past exhibitions
+const pastExhibitions = [
+  {
+    title: "Pocket Calculators & Early Computers",
+    date: "January - March 2025",
+    image: "https://images.pexels.com/photos/3825573/pexels-photo-3825573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "The tools that changed how we work, from abacuses to pocket calculators to early personal computers.",
+    location: "Technology Hall",
+    link: "/exhibitions/calculators-computers"
+  },
+  {
+    title: "Analog Photography",
+    date: "November 2024 - January 2025",
+    image: "https://images.pexels.com/photos/821738/pexels-photo-821738.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "The art and science of film photography, from early Kodak cameras to instant film and everything in between.",
+    location: "Visual Arts Gallery",
+    link: "/exhibitions/analog-photography"
+  },
+  {
+    title: "Lost Music Machines",
+    date: "September - October 2024",
+    image: "https://images.pexels.com/photos/775414/pexels-photo-775414.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    description: "The evolution of portable music, from portable record players to Walkmans, Discmans, and early MP3 players.",
+    location: "Sound & Vision Hall",
+    link: "/exhibitions/lost-music-machines"
+  }
+];
+---
+
+<Layout 
+  title="Exhibitions"
+  description="Explore our current, upcoming, and past exhibitions at the Museum of Lost Time."
+>
+  <Hero 
+    title="Exhibitions"
+    subtitle="Discover our curated collections and special exhibitions exploring forgotten technologies"
+    image="https://images.pexels.com/photos/2034335/pexels-photo-2034335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  />
+  
+  <!-- Current Exhibitions -->
+  <section class="py-16 bg-white dark:bg-dark-900" id="current">
+    <div class="container mx-auto px-4">
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+        Current Exhibitions
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {currentExhibitions.map(exhibition => (
+          <ExhibitionCard {...exhibition} />
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Exhibition Detail -->
+  <section class="py-24 bg-dark-50 dark:bg-dark-800/50 overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-on-scroll">
+          <img 
+            src="https://images.pexels.com/photos/2587464/pexels-photo-2587464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            alt="The Tech Time Capsule Exhibition" 
+            class="rounded-lg shadow-lg object-cover w-full h-auto"
+          />
+        </div>
+        
+        <div class="animate-on-scroll">
+          <div class="bg-primary-600 text-white text-sm font-medium px-3 py-1 rounded-full inline-block mb-4">
+            Featured Exhibition
+          </div>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white mb-4">
+            The Tech Time Capsule
+          </h2>
+          <p class="text-dark-600 dark:text-dark-300 mb-6">
+            Join us for a special exhibition showcasing rare and obsolete technologies from the 1970s to the early 2000s.
+          </p>
+          
+          <div class="bg-white dark:bg-dark-800 rounded-lg p-6 mb-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+              <div>
+                <h3 class="font-medium text-lg">Exhibition Details</h3>
+              </div>
+              <div class="text-primary-600 dark:text-primary-400 font-medium">
+                June 1 – July 15, 2025
+              </div>
+            </div>
+            
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                </svg>
+                <span class="text-dark-600 dark:text-dark-300">Main Hall, Museum of Lost Time</span>
+              </li>
+              <div class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <span class="text-dark-600 dark:text-dark-300">Daily guided tours at 11:00 AM and 2:00 PM</span>
+              </div>
+              <div class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+                </svg>
+                <span class="text-dark-600 dark:text-dark-300">Included with museum admission</span>
+              </div>
+            </div>
+          </div>
+          
+          <p class="text-dark-600 dark:text-dark-300 mb-6">
+            This exhibition takes visitors on a nostalgic journey through the technology that shaped our lives from the 1970s through the early 2000s. View rare and obsolete gadgets that were once cutting-edge innovations, from early home computers and game consoles to pagers, PDAs, and early mobile phones.
+          </p>
+          
+          <a 
+            href="/exhibitions/tech-time-capsule" 
+            class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+          >
+            Exhibition Details
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Upcoming Exhibitions -->
+  <section class="py-16 bg-white dark:bg-dark-900" id="upcoming">
+    <div class="container mx-auto px-4">
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+        Upcoming Exhibitions
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {upcomingExhibitions.map(exhibition => (
+          <ExhibitionCard {...exhibition} />
+        ))}
+      </div>
+      
+      <div class="mt-12 text-center animate-on-scroll">
+        <p class="text-dark-600 dark:text-dark-300 mb-6 max-w-2xl mx-auto">
+          Want to be notified about upcoming exhibitions? Join our mailing list to receive updates and exclusive previews.
+        </p>
+        <a 
+          href="/subscribe" 
+          class="inline-flex items-center justify-center px-6 py-3 border-2 border-primary-600 dark:border-primary-500 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white font-medium rounded-lg transition-colors"
+        >
+          Subscribe to Updates
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Past Exhibitions -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50" id="past">
+    <div class="container mx-auto px-4">
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+        Past Exhibitions
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {pastExhibitions.map(exhibition => (
+          <ExhibitionCard {...exhibition} />
+        ))}
+      </div>
+      
+      <div class="mt-12 text-center animate-on-scroll">
+        <a 
+          href="/exhibitions/archive" 
+          class="inline-flex items-center justify-center px-6 py-3 border-2 border-dark-400 dark:border-dark-500 text-dark-600 dark:text-dark-300 hover:bg-dark-100 dark:hover:bg-dark-700 font-medium rounded-lg transition-colors"
+        >
+          View Exhibition Archive
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Exhibitions Highlight -->
+  <section class="py-24 bg-white dark:bg-dark-900 overflow-hidden" id="highlights">
+    <div class="container mx-auto px-4">
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-dark-900 dark:text-white text-center mb-16 animate-on-scroll">
+        Collection Highlights
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div class="animate-on-scroll">
+          <div class="relative">
+            <img 
+              src="https://images.pexels.com/photos/3951050/pexels-photo-3951050.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+              alt="First Generation Apple iPod" 
+              class="rounded-lg shadow-lg"
+            />
+            <div class="absolute -bottom-6 -right-6 bg-white dark:bg-dark-800 rounded-full p-3 shadow-lg">
+              <div class="bg-primary-600 rounded-full p-3 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="animate-on-scroll">
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-dark-900 dark:text-white mb-4">
+            First Generation Apple iPod (2001)
+          </h3>
+          <p class="text-dark-600 dark:text-dark-300 mb-6">
+            When launched in 2001, the first iPod revolutionized portable music with its "1,000 songs in your pocket" capability. Its iconic white design and click wheel interface changed how we interacted with technology and music.
+          </p>
+          <p class="text-dark-600 dark:text-dark-300 mb-8">
+            Our museum's collection includes a fully functional original 5GB iPod, complete with its original packaging, accessories, and promotional materials that showcase how Apple marketed this groundbreaking device.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span class="inline-block px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-sm font-medium">
+              Portable Audio
+            </span>
+            <span class="inline-block px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-sm font-medium">
+              2000s Technology
+            </span>
+            <span class="inline-block px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-sm font-medium">
+              Apple
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mt-24">
+        <div class="order-2 md:order-1 animate-on-scroll">
+          <h3 class="font-display font-bold text-2xl md:text-3xl text-dark-900 dark:text-white mb-4">
+            Nokia 3310 (2000)
+          </h3>
+          <p class="text-dark-600 dark:text-dark-300 mb-6">
+            The Nokia 3310 became a cultural icon and symbol of durability in mobile phone history. With its long battery life, compact design, and the addictive game "Snake," it sold over 126 million units worldwide.
+          </p>
+          <p class="text-dark-600 dark:text-dark-300 mb-8">
+            Our exhibit showcases this legendary device alongside information about how mobile phones evolved from simple communication tools to the multifunctional smartphones we use today.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span class="inline-block px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-sm font-medium">
+              Mobile Phones
+            </span>
+            <span class="inline-block px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-sm font-medium">
+              2000s Technology
+            </span>
+            <span class="inline-block px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-sm font-medium">
+              Nokia
+            </span>
+          </div>
+        </div>
+        
+        <div class="order-1 md:order-2 animate-on-scroll">
+          <div class="relative">
+            <img 
+              src="https://images.pexels.com/photos/4195325/pexels-photo-4195325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+              alt="Nokia 3310" 
+              class="rounded-lg shadow-lg"
+            />
+            <div class="absolute -bottom-6 -left-6 bg-white dark:bg-dark-800 rounded-full p-3 shadow-lg">
+              <div class="bg-primary-600 rounded-full p-3 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-16 animate-on-scroll">
+        <a 
+          href="/collection" 
+          class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+        >
+          Explore Full Collection
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

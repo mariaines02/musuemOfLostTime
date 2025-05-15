@@ -1,0 +1,328 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import MuseumRules from '../components/MuseumRules.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+// Ticket information
+const tickets = [
+  {
+    type: 'Adult',
+    price: '$15',
+    details: 'Ages 18-64'
+  },
+  {
+    type: 'Student',
+    price: '$10',
+    details: 'With valid student ID'
+  },
+  {
+    type: 'Senior',
+    price: '$10',
+    details: 'Ages 65+'
+  },
+  {
+    type: 'Child',
+    price: '$8',
+    details: 'Ages 5-17'
+  },
+  {
+    type: 'Family',
+    price: '$40',
+    details: '2 adults and up to 3 children'
+  },
+  {
+    type: 'Museum Member',
+    price: 'Free',
+    details: 'With valid membership'
+  }
+];
+
+// FAQ items
+const faqs = [
+  {
+    question: 'Is photography allowed in the museum?',
+    answer: 'Yes, photography is allowed for personal use, but please no flash photography as it can damage artifacts. For commercial photography, please contact us in advance.'
+  },
+  {
+    question: 'Are there guided tours available?',
+    answer: 'Yes, we offer guided tours daily at 11am and 2pm. Tours last approximately 60 minutes and are included with your admission. Private tours can also be arranged for groups.'
+  },
+  {
+    question: 'Is the museum accessible for visitors with disabilities?',
+    answer: 'Yes, our museum is fully accessible with ramps, elevators, and accessible restrooms. We also offer audio guides and large-print materials for visitors with visual impairments.'
+  },
+  {
+    question: 'Are there food options available at the museum?',
+    answer: 'Yes, we have a café on the first floor serving light refreshments, coffee, and snacks. Outside food and beverages are not permitted in the exhibition areas.'
+  },
+  {
+    question: 'How long does a typical visit take?',
+    answer: 'Most visitors spend about 2-3 hours exploring our exhibitions. If you participate in interactive activities or attend a guided tour, you may want to allow additional time.'
+  }
+];
+---
+
+<Layout 
+  title="Visit Us"
+  description="Plan your visit to the Museum of Lost Time. Find information about hours, tickets, directions, and accessibility."
+>
+  <Hero 
+    title="Plan Your Visit"
+    subtitle="Everything you need to know to make the most of your museum experience"
+    image="https://images.pexels.com/photos/3694708/pexels-photo-3694708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  />
+  
+  <!-- Visit Info -->
+  <section class="py-16 bg-white dark:bg-dark-900" id="hours">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="animate-on-scroll">
+            <h2 class="font-display font-bold text-2xl md:text-3xl text-dark-900 dark:text-white mb-6">
+              Opening Hours
+            </h2>
+            <ul class="space-y-4">
+              <li class="flex justify-between items-center pb-2 border-b border-dark-100 dark:border-dark-700">
+                <span class="font-medium">Monday</span>
+                <span class="text-dark-600 dark:text-dark-300">Closed</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-dark-100 dark:border-dark-700">
+                <span class="font-medium">Tuesday - Friday</span>
+                <span class="text-dark-600 dark:text-dark-300">10:00 AM - 6:00 PM</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-dark-100 dark:border-dark-700">
+                <span class="font-medium">Saturday - Sunday</span>
+                <span class="text-dark-600 dark:text-dark-300">9:00 AM - 7:00 PM</span>
+              </li>
+              <li class="flex justify-between items-center pb-2 border-b border-dark-100 dark:border-dark-700">
+                <span class="font-medium">Public Holidays</span>
+                <span class="text-dark-600 dark:text-dark-300">11:00 AM - 5:00 PM</span>
+              </li>
+            </ul>
+            <p class="mt-4 text-sm text-dark-500 dark:text-dark-400">
+              * Last entry 1 hour before closing time
+            </p>
+          </div>
+          
+          <div class="animate-on-scroll" id="location">
+            <h2 class="font-display font-bold text-2xl md:text-3xl text-dark-900 dark:text-white mb-6">
+              Location & Directions
+            </h2>
+            <address class="not-italic mb-4 text-dark-600 dark:text-dark-300">
+              123 Museum Street<br/>
+              Techville, NY 10001<br/>
+              United States
+            </address>
+            <div class="mb-6">
+              <h3 class="font-bold mb-2">Public Transport</h3>
+              <p class="text-dark-600 dark:text-dark-300">
+                Subway: Line A, B, C to Tech Station<br/>
+                Bus: Routes 42, 56, 78 to Museum Stop
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold mb-2">Parking</h3>
+              <p class="text-dark-600 dark:text-dark-300">
+                Limited parking available at the museum. Additional public parking available at Tech Plaza (2 blocks away).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Ticket Information -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50" id="tickets">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display font-bold text-3xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+          Admission & Tickets
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {tickets.map(ticket => (
+            <div class="bg-white dark:bg-dark-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow animate-on-scroll">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="font-bold text-lg text-dark-900 dark:text-white">{ticket.type}</h3>
+                <span class="font-display font-bold text-xl text-primary-600 dark:text-primary-400">{ticket.price}</span>
+              </div>
+              <p class="text-dark-600 dark:text-dark-300 text-sm">{ticket.details}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div class="bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800 rounded-lg p-6 animate-on-scroll">
+          <h3 class="font-bold text-lg text-dark-900 dark:text-white mb-2">Special Discounts</h3>
+          <ul class="space-y-2 text-dark-600 dark:text-dark-300">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Groups of 10+ receive 15% discount (reservation required)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Free admission on first Wednesday of each month (limited capacity)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Teachers with valid ID receive free admission</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="text-center mt-8 animate-on-scroll">
+          <a 
+            href="/tickets" 
+            class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+          >
+            Book Tickets Online
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Museum Rules -->
+  <MuseumRules />
+  
+  <!-- Accessibility -->
+  <section class="py-16 bg-white dark:bg-dark-900" id="accessibility">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display font-bold text-3xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+          Accessibility
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="animate-on-scroll">
+            <h3 class="font-bold text-xl mb-4 text-dark-900 dark:text-white">Physical Accessibility</h3>
+            <ul class="space-y-3 text-dark-600 dark:text-dark-300">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Wheelchair accessible entrances and elevators</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Accessible restrooms on all floors</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Designated accessible parking spaces</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Service animals welcome</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="animate-on-scroll">
+            <h3 class="font-bold text-xl mb-4 text-dark-900 dark:text-white">Additional Services</h3>
+            <ul class="space-y-3 text-dark-600 dark:text-dark-300">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Audio guides available for visitors with visual impairments</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Large-print guides and brochures</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>ASL interpretation for guided tours (with advance notice)</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Sensory-friendly hours once a month</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-center animate-on-scroll">
+          <p class="text-dark-600 dark:text-dark-300 mb-4">
+            For specific accessibility accommodations or questions, please contact us:
+          </p>
+          <a href="mailto:access@museumoflosttime.com" class="text-primary-600 dark:text-primary-400 hover:underline">
+            access@museumoflosttime.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQs -->
+  <section class="py-16 bg-dark-50 dark:bg-dark-800/50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display font-bold text-3xl text-dark-900 dark:text-white text-center mb-12 animate-on-scroll">
+          Frequently Asked Questions
+        </h2>
+        
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="animate-on-scroll">
+              <details class="group bg-white dark:bg-dark-800 rounded-lg overflow-hidden shadow-sm">
+                <summary class="flex justify-between items-center px-6 py-4 cursor-pointer focus:outline-none">
+                  <h3 class="font-medium text-lg text-dark-900 dark:text-white">{faq.question}</h3>
+                  <span class="ml-6 flex-shrink-0 text-dark-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transform group-open:rotate-180 transition-transform duration-200">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </span>
+                </summary>
+                <div class="px-6 py-4 border-t border-dark-100 dark:border-dark-700">
+                  <p class="text-dark-600 dark:text-dark-300">{faq.answer}</p>
+                </div>
+              </details>
+            </div>
+          ))}
+        </div>
+        
+        <div class="mt-12 text-center animate-on-scroll">
+          <p class="text-dark-600 dark:text-dark-300 mb-4">
+            Still have questions? We're here to help!
+          </p>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center justify-center px-6 py-3 border-2 border-primary-600 dark:border-primary-500 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white font-medium rounded-lg transition-colors"
+          >
+            Contact Us
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Information -->
+  <ContactSection />
+</Layout>

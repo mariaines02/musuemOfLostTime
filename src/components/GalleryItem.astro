@@ -1,0 +1,23 @@
+---
+interface Props {
+  image: string;
+  title: string;
+  description?: string;
+}
+
+const { image, title, description } = Astro.props;
+---
+
+<div class="group relative overflow-hidden rounded-lg shadow-md animate-on-scroll">
+  <img 
+    src={image} 
+    alt={title} 
+    class="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-105"
+  />
+  <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-dark-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+    <h3 class="font-display font-bold text-white text-lg mb-1">{title}</h3>
+    {description && (
+      <p class="text-white/80 text-sm">{description}</p>
+    )}
+  </div>
+</div>
